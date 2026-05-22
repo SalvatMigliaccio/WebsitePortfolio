@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
-import { GraduationCap, Cpu, Shield, Globe, Briefcase, Award } from 'lucide-react';
+import { GitHubCalendar } from 'react-github-calendar';
+import { GraduationCap, Cpu, Shield, Globe, Briefcase, Award, Atom, Code2, Music, Gamepad2, Layers, Tv, BookOpen } from 'lucide-react';
 import { t } from '../../i18n';
 import { SectionTitle } from '../common/SectionTitle';
 
@@ -69,6 +70,8 @@ export function About() {
     { key: 'about.interest.ai', icon: <Cpu size={16} /> },
     { key: 'about.interest.web', icon: <Globe size={16} /> },
     { key: 'about.interest.sec', icon: <Shield size={16} /> },
+    { key: 'about.interest.quantum', icon: <Atom size={16} /> },
+    { key: 'about.interest.leetcode', icon: <Code2 size={16} /> },
   ];
 
   return (
@@ -310,7 +313,7 @@ export function About() {
               </div>
             </motion.div>
 
-            {/* Interests */}
+            {/* Languages */}
             <motion.div
               initial="hidden"
               whileInView="visible"
@@ -328,7 +331,65 @@ export function About() {
                   marginBottom: '0.6rem',
                 }}
               >
-                {t('about.interests.label')}
+                Languages
+              </p>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                {[
+                  { lang: 'Italian', level: 'Native' },
+                  { lang: 'English', level: 'B2' },
+                ].map(({ lang, level }) => (
+                  <div
+                    key={lang}
+                    style={{
+                      background: 'var(--color-bg-surface)',
+                      border: '1px solid var(--color-border)',
+                      borderRadius: '8px',
+                      padding: '0.6rem 1rem',
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      alignItems: 'center',
+                    }}
+                  >
+                    <span style={{ fontSize: '0.85rem', fontWeight: 500, color: 'var(--color-text-primary)' }}>
+                      {lang}
+                    </span>
+                    <span
+                      style={{
+                        fontFamily: 'var(--font-mono)',
+                        fontSize: '0.72rem',
+                        color: 'var(--color-text-muted)',
+                        background: 'var(--color-bg-elevated)',
+                        border: '1px solid var(--color-border)',
+                        borderRadius: '4px',
+                        padding: '2px 8px',
+                      }}
+                    >
+                      {level}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Interests */}
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              variants={fadeUp}
+              custom={5}
+            >
+              <p
+                style={{
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '0.7rem',
+                  color: 'var(--color-text-muted)',
+                  letterSpacing: '0.12em',
+                  textTransform: 'uppercase',
+                  marginBottom: '0.6rem',
+                }}
+              >
+                Working Interests
               </p>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
                 {interests.map(({ key, icon }) => (
@@ -348,6 +409,55 @@ export function About() {
                   >
                     {icon}
                     {t(key)}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Personal Interests */}
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              variants={fadeUp}
+              custom={6}
+            >
+              <p
+                style={{
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '0.7rem',
+                  color: 'var(--color-text-muted)',
+                  letterSpacing: '0.12em',
+                  textTransform: 'uppercase',
+                  marginBottom: '0.6rem',
+                }}
+              >
+                Interests
+              </p>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+                {[
+                  { label: 'Music',              icon: <Music size={16} /> },
+                  { label: 'Gaming',             icon: <Gamepad2 size={16} /> },
+                  { label: 'Trading Card Games', icon: <Layers size={16} /> },
+                  { label: 'Films & TV Series',  icon: <Tv size={16} /> },
+                  { label: 'Manga & Comics',     icon: <BookOpen size={16} /> },
+                ].map(({ label, icon }) => (
+                  <span
+                    key={label}
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '0.4rem',
+                      background: 'var(--color-bg-elevated)',
+                      border: '1px solid var(--color-border)',
+                      borderRadius: '5px',
+                      padding: '0.3rem 0.75rem',
+                      fontSize: '0.8rem',
+                      color: 'var(--color-text-secondary)',
+                    }}
+                  >
+                    {icon}
+                    {label}
                   </span>
                 ))}
               </div>
@@ -497,7 +607,48 @@ export function About() {
             </div>
           </motion.div>
         </div>
-      </div>
+        {/* GitHub Activity */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.55, ease: 'easeOut' }}
+          style={{ marginTop: '3.5rem' }}
+        >
+          <p
+            style={{
+              fontFamily: 'var(--font-mono)',
+              fontSize: '0.7rem',
+              color: 'var(--color-text-muted)',
+              letterSpacing: '0.12em',
+              textTransform: 'uppercase',
+              marginBottom: '1.25rem',
+            }}
+          >
+            GitHub Activity
+          </p>
+          <div
+            style={{
+              background: 'var(--color-bg-surface)',
+              border: '1px solid var(--color-border)',
+              borderRadius: '10px',
+              padding: '1.5rem',
+              overflowX: 'auto',
+            }}
+          >
+            <GitHubCalendar
+              username="SalvatMigliaccio"
+              colorScheme="dark"
+              theme={{
+                dark: ['#161616', '#252525', '#3a3a3a', '#686868', '#e8e8e8'],
+              }}
+              blockSize={13}
+              blockMargin={4}
+              fontSize={12}
+              style={{ color: 'var(--color-text-muted)' }}
+            />
+          </div>
+        </motion.div>      </div>
     </section>
   );
 }

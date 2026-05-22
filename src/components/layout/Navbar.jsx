@@ -4,8 +4,8 @@ import { t } from '../../i18n';
 import { useScrollSpy } from '../../hooks/useScrollSpy';
 import { useScrollPosition } from '../../hooks/useScrollPosition';
 
-const NAV_SECTIONS = ['hero', 'about', 'skills', 'projects', 'publications', 'contact'];
-const NAV_KEYS = ['nav.home', 'nav.about', 'nav.skills', 'nav.projects', 'nav.publications', 'nav.contact'];
+const NAV_SECTIONS = ['hero', 'about', 'skills', 'projects', 'publications', 'blog', 'contact'];
+const NAV_KEYS = ['nav.home', 'nav.about', 'nav.skills', 'nav.projects', 'nav.publications', 'nav.blog', 'nav.contact'];
 
 function scrollTo(id) {
   document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });

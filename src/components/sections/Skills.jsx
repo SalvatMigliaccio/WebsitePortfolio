@@ -53,6 +53,15 @@ export function Skills() {
                 border: '1px solid var(--color-border)',
                 borderRadius: '10px',
                 padding: '1.5rem',
+                transition: 'border-color 0.2s ease, box-shadow 0.2s ease',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = '#484848';
+                e.currentTarget.style.boxShadow = '0 0 30px rgba(255,255,255,0.05)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = 'var(--color-border)';
+                e.currentTarget.style.boxShadow = 'none';
               }}
             >
               <p

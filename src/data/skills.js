@@ -51,4 +51,17 @@ export const skills = [
       'Burp Suite',
     ],
   },
+  {
+    categoryKey: 'skills.cat.soft',
+    items: [
+      'Research & Technical Writing',
+      'International Collaboration',
+      'Technical Presentations',
+      'Problem Solving',
+      'Academic Mentoring',
+      'Cross-functional Communication',
+      'Project Management',
+      'Attention to Detail',
+    ],
+  },
 ];

@@ -18,15 +18,17 @@ export function ProjectCard({ project }) {
         display: 'flex',
         flexDirection: 'column',
         gap: '1rem',
-        transition: 'border-color 0.2s ease, transform 0.2s ease',
+        transition: 'border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease',
       }}
       onMouseEnter={(e) => {
-        e.currentTarget.style.borderColor = '#444';
-        e.currentTarget.style.transform = 'translateY(-3px)';
+        e.currentTarget.style.borderColor = '#484848';
+        e.currentTarget.style.transform = 'translateY(-4px)';
+        e.currentTarget.style.boxShadow = '0 12px 40px rgba(255,255,255,0.06), 0 0 0 1px rgba(255,255,255,0.04)';
       }}
       onMouseLeave={(e) => {
         e.currentTarget.style.borderColor = 'var(--color-border)';
         e.currentTarget.style.transform = 'translateY(0)';
+        e.currentTarget.style.boxShadow = 'none';
       }}
     >
       {/* Header */}

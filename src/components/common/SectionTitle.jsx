@@ -30,7 +30,7 @@ export function SectionTitle({ title, subtitle, className }) {
           marginTop: '1rem',
           width: '2.5rem',
           height: '2px',
-          background: 'var(--color-accent)',
+          background: 'linear-gradient(to right, var(--color-text-primary), transparent)',
           borderRadius: '2px',
         }}
       />

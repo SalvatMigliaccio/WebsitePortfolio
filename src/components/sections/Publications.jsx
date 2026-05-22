@@ -56,15 +56,19 @@ export function Publications() {
                 borderRadius: '10px',
                 padding: '1.5rem 1.75rem',
                 cursor: 'pointer',
-                transition: 'border-color 0.2s ease, background 0.2s ease',
+                transition: 'border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = '#555';
+                e.currentTarget.style.borderColor = '#484848';
                 e.currentTarget.style.background = 'var(--color-bg-elevated)';
+                e.currentTarget.style.boxShadow = '0 12px 40px rgba(255,255,255,0.06), 0 0 0 1px rgba(255,255,255,0.04)';
+                e.currentTarget.style.transform = 'translateY(-3px)';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.borderColor = 'var(--color-border)';
                 e.currentTarget.style.background = 'var(--color-bg-surface)';
+                e.currentTarget.style.boxShadow = 'none';
+                e.currentTarget.style.transform = 'translateY(0)';
               }}
             >
               <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>

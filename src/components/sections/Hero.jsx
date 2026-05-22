@@ -53,10 +53,26 @@ function scrollTo(id) {
 
 export function Hero() {
   const titles = t('hero.titles');
+  const heroRef = useRef(null);
+
+  useEffect(() => {
+    const el = heroRef.current;
+    if (!el) return;
+    const handleMove = (e) => {
+      const rect = el.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      el.style.setProperty('--mx', `${x}%`);
+      el.style.setProperty('--my', `${y}%`);
+    };
+    el.addEventListener('mousemove', handleMove);
+    return () => el.removeEventListener('mousemove', handleMove);
+  }, []);
 
   return (
     <section
       id="hero"
+      ref={heroRef}
       style={{
         position: 'relative',
         minHeight: 'calc(100vh - 64px)',
@@ -73,6 +89,42 @@ export function Hero() {
           inset: 0,
           zIndex: 0,
           pointerEvents: 'none',
+        }}
+      />
+
+      {/* Mouse-tracking spotlight */}
+      <div className="hero-spotlight" />
+
+      {/* Ambient glow blob — top left */}
+      <div
+        style={{
+          position: 'absolute',
+          width: '650px',
+          height: '500px',
+          top: '-200px',
+          left: '-180px',
+          background: 'rgba(255,255,255,0.016)',
+          borderRadius: '50%',
+          filter: 'blur(120px)',
+          pointerEvents: 'none',
+          animation: 'float-slow 16s ease-in-out infinite',
+          zIndex: 0,
+        }}
+      />
+      {/* Ambient glow blob — bottom right */}
+      <div
+        style={{
+          position: 'absolute',
+          width: '450px',
+          height: '380px',
+          bottom: '-180px',
+          right: '0',
+          background: 'rgba(255,255,255,0.01)',
+          borderRadius: '50%',
+          filter: 'blur(100px)',
+          pointerEvents: 'none',
+          animation: 'float-slow-alt 20s ease-in-out infinite',
+          zIndex: 0,
         }}
       />
 
@@ -114,6 +166,7 @@ export function Hero() {
             lineHeight: 1.05,
             letterSpacing: '-0.04em',
             margin: '0 0 1rem',
+            textShadow: '0 0 80px rgba(255,255,255,0.08), 0 0 160px rgba(255,255,255,0.04)',
           }}
         >
           {t('hero.name')}

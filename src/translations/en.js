@@ -5,6 +5,7 @@ const en = {
   'nav.skills': 'Skills',
   'nav.projects': 'Projects',
   'nav.publications': 'Publications',
+  'nav.blog': 'Notes',
   'nav.contact': 'Contact',
   'nav.cv': 'Download CV',
 
@@ -39,6 +40,8 @@ const en = {
   'about.interest.ai': 'Agentic AI & RAG',
   'about.interest.web': 'AI Standardization',
   'about.interest.sec': 'Cyber Security Research',
+  'about.interest.quantum': 'Quantum Computing',
+  'about.interest.leetcode': 'LeetCode',
 
   // Skills
   'skills.title': 'Skills',
@@ -47,6 +50,7 @@ const en = {
   'skills.cat.ai': 'AI & Machine Learning',
   'skills.cat.dev': 'Development',
   'skills.cat.tools': 'Tools & Platforms',
+  'skills.cat.soft': 'Soft Skills',
 
   // Projects
   'projects.title': 'Projects',
