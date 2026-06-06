@@ -62,16 +62,27 @@ export function Contact() {
         import.meta.env.VITE_EMAILJS_SERVICE_ID,
         import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         {
+          name: form.name,
           from_name: form.name,
-          from_email: form.email,
+          reply_to: form.email,
           message: form.message,
+          title: 'Portfolio Contact',
+          time: new Date().toLocaleString('en-US', {
+            weekday: 'short',
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+          }),
         },
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       );
       setStatus('success');
       setForm({ name: '', email: '', message: '' });
       showToast('success', "Message sent! I'll get back to you soon.");
-    } catch {
+    } catch (err) {
+      console.error('[EmailJS error]', err);
       setStatus('error');
       showToast('error', 'Something went wrong. Please try again.');
     }
