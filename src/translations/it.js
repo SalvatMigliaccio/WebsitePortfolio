@@ -4,6 +4,7 @@ const it = {
   'nav.about': 'Chi Sono',
   'nav.skills': 'Competenze',
   'nav.projects': 'Progetti',
+  'nav.talks': 'Talk',
   'nav.contact': 'Contatti',
   'nav.cv': 'Scarica CV',
 
@@ -63,13 +64,18 @@ const it = {
 
   'projects.pqcanalysis.title': 'Analisi Algoritmi PQC',
   'projects.pqcanalysis.desc':
-    "Una serie di analisi comparative approfondite sui finalisti NIST della crittografia post-quantistica. Copre assunzioni di sicurezza, dimensioni delle chiavi, complessità computazionale e applicabilità reale.",
+    "Una serie di analisi comparative approfondite sui finalisti NIST della crittografia post-quantistica. I benchmark sono stati presentati alla 6ª Conferenza PQC del NIST a Gaithersburg, MD a Settembre 2025. Copre assunzioni di sicurezza, dimensioni delle chiavi, complessità computazionale e applicabilità reale.",
   'projects.pqcanalysis.tags': ['PQC', 'Crittografia', 'Ricerca', 'NIST', 'Python'],
 
   'projects.airag.title': 'Agentic AI RAG',
   'projects.airag.desc':
     "Un sistema AI agente che implementa Retrieval-Augmented Generation (RAG) per il recupero intelligente di documenti e Q&A. Usa embedding vettoriali, orchestrazione LLM e un loop agente personalizzato per ragionamento multi-step su corpus documentali.",
   'projects.airag.tags': ['Python', 'LangChain', 'RAG', 'LLM', 'Vector DB', 'AI'],
+
+  // Talks
+  'talks.title': 'Talk',
+  'talks.subtitle': 'Presentazioni selezionate e contributi in conferenze.',
+  'talks.cta': 'Apri materiale',
 
   // Contact
   'contact.title': 'Contatti',

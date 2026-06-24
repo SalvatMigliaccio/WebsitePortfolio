@@ -19,7 +19,7 @@ export const projects = [
   {
     id: 'pqcanalysis',
     translationKey: 'projects.pqcanalysis',
-    link: '#',
+    link: 'https://csrc.nist.gov/csrc/media/events/2025/sixth-pqc-standardization-conference/namirials%20explorations%20regarding%20recent%20pqc%20solutions.pdf',
     deployed: false,
     wip: false,
   },

@@ -4,6 +4,7 @@ const en = {
   'nav.about': 'About',
   'nav.skills': 'Skills',
   'nav.projects': 'Projects',
+  'nav.talks': 'Talks',
   'nav.publications': 'Publications',
   'nav.blog': 'Notes',
   'nav.contact': 'Contact',
@@ -71,13 +72,18 @@ const en = {
 
   'projects.pqcanalysis.title': 'PQC Algorithm Analysis',
   'projects.pqcanalysis.desc':
-    'A series of in-depth comparative analyses of NIST post-quantum cryptography finalists and standards. Covers security assumptions, key and signature sizes, computational complexity, and real-world deployment considerations.',
+    'A series of in-depth comparative analyses of NIST post-quantum cryptography finalists and standards. Those benchmark was discussed at NIST 6th PQC Conference in Gaithersburg, MD. Covers security assumptions, key and signature sizes, computational complexity, and real-world deployment considerations.',
   'projects.pqcanalysis.tags': ['PQC', 'Cryptography', 'Research', 'NIST', 'Python'],
 
   'projects.airag.title': 'Agentic AI RAG',
   'projects.airag.desc':
     'An agentic AI system implementing Retrieval-Augmented Generation (RAG) for intelligent document retrieval and Q&A. Uses vector embeddings, LLM orchestration, and a custom agent loop for multi-step reasoning over document corpora.',
   'projects.airag.tags': ['Python', 'LangChain', 'RAG', 'LLM', 'Vector DB', 'AI'],
+
+  // Talks
+  'talks.title': 'Talks',
+  'talks.subtitle': 'Selected presentations and conference contributions.',
+  'talks.cta': 'View Talk Material',
 
   // Contact
   'contact.title': 'Contact',
