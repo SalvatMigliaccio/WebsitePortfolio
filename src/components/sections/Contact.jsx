@@ -31,12 +31,17 @@ const inputStyle = {
   boxSizing: 'border-box',
 };
 
+const RATE_LIMIT_MS = 60_000;
+
 export function Contact() {
   const formRef = useRef(null);
   const [status, setStatus] = useState('idle');
   const [form, setForm] = useState({ name: '', email: '', message: '' });
   const [toast, setToast] = useState(null);
   const [copied, setCopied] = useState(false);
+  const [cooldownUntil, setCooldownUntil] = useState(0);
+
+  const isCoolingDown = Date.now() < cooldownUntil;
 
   function handleChange(e) {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -56,16 +61,23 @@ export function Contact() {
 
   async function handleSubmit(e) {
     e.preventDefault();
+    if (isCoolingDown) return;
+    const trimmed = {
+      name: form.name.trim().slice(0, 100),
+      email: form.email.trim().slice(0, 254),
+      message: form.message.trim().slice(0, 2000),
+    };
+    if (!trimmed.name || !trimmed.email || !trimmed.message) return;
     setStatus('sending');
     try {
       await emailjs.send(
         import.meta.env.VITE_EMAILJS_SERVICE_ID,
         import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         {
-          name: form.name,
-          from_name: form.name,
-          reply_to: form.email,
-          message: form.message,
+          name: trimmed.name,
+          from_name: trimmed.name,
+          reply_to: trimmed.email,
+          message: trimmed.message,
           title: 'Portfolio Contact',
           time: new Date().toLocaleString('en-US', {
             weekday: 'short',
@@ -80,6 +92,7 @@ export function Contact() {
       );
       setStatus('success');
       setForm({ name: '', email: '', message: '' });
+      setCooldownUntil(Date.now() + RATE_LIMIT_MS);
       showToast('success', "Message sent! I'll get back to you soon.");
     } catch (err) {
       console.error('[EmailJS error]', err);
@@ -144,6 +157,7 @@ export function Contact() {
                 type="text"
                 name="name"
                 required
+                maxLength={100}
                 value={form.name}
                 onChange={handleChange}
                 placeholder={t('contact.form.placeholder.name')}
@@ -171,6 +185,7 @@ export function Contact() {
                 type="email"
                 name="email"
                 required
+                maxLength={254}
                 value={form.email}
                 onChange={handleChange}
                 placeholder={t('contact.form.placeholder.email')}
@@ -198,6 +213,7 @@ export function Contact() {
                 name="message"
                 required
                 rows={5}
+                maxLength={2000}
                 value={form.message}
                 onChange={handleChange}
                 placeholder={t('contact.form.placeholder.message')}
@@ -210,9 +226,9 @@ export function Contact() {
             {/* Submit */}
             <button
               type="submit"
-              disabled={status === 'sending'}
+              disabled={status === 'sending' || isCoolingDown}
               onMouseEnter={(e) => {
-                if (status !== 'sending') {
+                if (status !== 'sending' && !isCoolingDown) {
                   e.currentTarget.style.borderColor = 'rgba(255,255,255,0.35)';
                   e.currentTarget.style.background = 'rgba(255,255,255,0.06)';
                   e.currentTarget.style.color = '#fff';
@@ -237,13 +253,13 @@ export function Contact() {
                 fontSize: '0.875rem',
                 fontWeight: 500,
                 letterSpacing: '0.02em',
-                cursor: status === 'sending' ? 'default' : 'pointer',
-                opacity: status === 'sending' ? 0.5 : 1,
+                cursor: (status === 'sending' || isCoolingDown) ? 'default' : 'pointer',
+                opacity: (status === 'sending' || isCoolingDown) ? 0.5 : 1,
                 transition: 'border-color 0.2s ease, background 0.2s ease, color 0.2s ease',
               }}
             >
               <Send size={14} />
-              {status === 'sending' ? t('contact.form.sending') : t('contact.form.send')}
+              {isCoolingDown ? 'Message sent' : status === 'sending' ? t('contact.form.sending') : t('contact.form.send')}
             </button>
 
             {/* Feedback */}

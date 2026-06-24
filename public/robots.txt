@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://salvatmigliaccio.github.io/WebsitePortfolio/sitemap.xml
+Sitemap: https://website-portfolio-gules.vercel.app/sitemap.xml
