@@ -50,7 +50,7 @@ export function Preloader() {
               textShadow: '0 0 60px rgba(255,255,255,0.15)',
             }}
           >
-            SM_
+            SM
           </motion.span>
 
           {/* Animated line */}

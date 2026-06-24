@@ -102,7 +102,7 @@ export function About() {
         >
           {/* Left: Avatar + Education + Interests */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.75rem' }}>
-            {/* Avatar placeholder */}
+            {/* Avatar */}
             <motion.div
               initial="hidden"
               whileInView="visible"
@@ -129,7 +129,7 @@ export function About() {
                 }}
               >
                 <img
-                  src="/avatar.jpg"
+                  src="/1777648175189.jpg"
                   alt="Salvatore Migliaccio"
                   style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                   onError={(e) => {
